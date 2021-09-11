@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap')
+@import 'src/styles/__mixins.scss'
+    
+
+*
+    font-family: 'Nunito', sans-serif
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    
+.message
+    background-color: #fff
+    box-shadow: 1px 1px 5px #c1c1c1
+    border-radius: 5px
+    @include centerContent
+    @include flexBox(center , column , center)
+    height: 300px
+    padding: 40px 20px
+    width: 300px
+    h2
+        border-bottom: 1px solid
+        color: #803093
+        font-size: 35px
+        font-weight: 700
+        margin-bottom: 10px
+        text-align: center
+    p
+        color: #585858
+        font-size: 24px
+        font-weight: 400
+        text-align: center
+
+
+@media screen and (min-width: 730px)
+    .message
+        width: 520px

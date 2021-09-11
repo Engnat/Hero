@@ -5,9 +5,13 @@ import { FormComponent } from './pages/form/form.component';
 const routes: Routes = [
 
   {
-    path: 'inicio',
+    path: 'form',
     component: FormComponent
   },
+  {
+    path: '', redirectTo: '/form', pathMatch: 'full'
+  }
+  
 
 ];
 

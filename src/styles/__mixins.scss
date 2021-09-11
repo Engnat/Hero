@@ -1,0 +1,13 @@
+@mixin flexBox ($varAlign , $varFlex, $varJustify:space-between){
+    align-items: $varAlign ;
+    display: flex;
+    flex-flow: $varFlex;
+    justify-content: $varJustify;
+}
+
+@mixin centerContent {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50% , -50%);
+}

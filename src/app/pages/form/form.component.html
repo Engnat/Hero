@@ -1,1 +1,80 @@
-<p>form works!</p>
+<main class="global-container">
+    <section  id="dataContainer" class="form-container">
+        <h1 class="form-container__title">Sign up for email updates</h1>
+        <em class="form-container__msj">*Indicates Required Field</em>
+        <form class="form-container__form" [formGroup]="updateMyForm" (ngSubmit)="onSubmit()" #formDirective="ngForm">
+                <div class="form-fields">
+                    <label for="fName" class="fieldForm">
+                        FIRTS NAME*
+                        <input type="text" id="fName" formControlName="firtsName" [ngClass]="{'is-valid': submitted && myForm.firtsName.errors , 'default' : !submitted}">
+                        <div *ngIf="submitted && myForm.firtsName.errors" class="error-msj">
+                            <div *ngIf="myForm.firtsName.errors.required">
+                                <p>First name is required</p>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <label for="lName" class="fieldForm">
+                        LAST NAME*
+                        <input id="lName" type="text" formControlName="lastName" [ngClass]="{'is-valid': submitted && myForm.firtsName.errors , 'default' : !submitted}" >
+                        <div *ngIf="submitted && submitted && myForm.lastName.errors" class="error-msj">
+                            <div *ngIf="myForm.lastName.errors.required">
+                                <p>Last name is required</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form-fields">
+                    <label for="mail" class="fieldForm">
+                        EMAIL ADDRESS*
+                        <input id="mail" type="email" formControlName="email" [ngClass]="{'is-valid': submitted && myForm.firtsName.errors , 'default' : !submitted}" >
+                        <div *ngIf="submitted && myForm.email.errors" class="error-msj">
+                            <div *ngIf="myForm.email.errors.required">
+                                <p>Email is required</p>
+                            </div>
+                            <div *ngIf="myForm.email.errors.pattern">
+                                <p>Invalid email</p>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <label for="org" class="fieldForm">
+                        ORGANIZATION
+                        <input [ngClass]="{'default' : true}" id="org" type="text"  formControlName="organization">
+                    </label>
+                </div>
+
+                <div class="form-fields">
+                    <label for="resident" class="fieldForm fieldForm--selectField">
+                        EU RESIDENT*
+                        <select name="euResident" id="resident" formControlName="euResident" (change)="changeOption($event)" [ngClass]="{'is-valid': submitted && myForm.euResident.errors , 'default' : !submitted}">
+                            <option value="" selected disabled hidden>- SELECT ONE -</option>
+                            <option value="" *ngFor="let item of euRes" [value]="item">{{item}}</option>
+                        </select>
+                        <div class="error-msj" *ngIf="submitted && myForm.euResident.errors">
+                            <p>Please select one</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form-fields form-fields--checkbox" >
+                    <div *ngFor="let data of Data; let i=index">
+                        <label for="adv" class="fieldForm">
+                            <input id="adv" type="checkbox" class="myCheckbox" [ngClass]="{'is-valid': submitted && myForm.checkBoxOpt.errors}" [value]="data.name" (change)="onCheckboxChange($event)">
+                            {{data.name}}
+                        </label>
+                    </div>
+
+                    <div class="error-msj" *ngIf="submitted && myForm.checkBoxOpt.errors" >
+                        <p>At least one checkbox is required to check
+                        </p>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="form-buttons--submit form-buttons__btn">SUBMIT</button>
+                    <button type="reset" class="form-buttons--reset form-buttons__btn" (click)="onReset()">RESET</button>
+                </div>
+        </form>
+    </section>
+</main>
